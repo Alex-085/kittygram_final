@@ -1,26 +1,53 @@
-#  Как работать с репозиторием финального задания
+# Описание проекта
+Сайт с возможностью публикации фотографий котов и их достижений.
 
-## Что нужно сделать
+# Возможности
+Публикация и редактирование профиля кота.
+Размещение фото и достижений кота.
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+# Технологии
+React
+Django
+DRF
+Nginx
+Gunicorn
+Docker
+Docker-compose
+CI/CD
+Github Actions
 
-## Как проверить работу с помощью автотестов
+# Установка.
+### Клонировать репозиторий:
+git clone git@github.com:Alex-085/kittygram_final.git
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
-```
+# Подготовка проекта к созданию образов контейнеров и запуску на удалённом сервере:
+Написать Dockerfile для образа "kittygram_backend".
+Создайть файл .env в корне проекта с переменными окружения:
+POSTGRES_USER=kittygram_user
+POSTGRES_PASSWORD=kittygram_password
+POSTGRES_DB=kittygram
+DB_HOST=db
+DB_PORT=5432
+DB_NAME=kittygram
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+Написать docker-compose.yml и docker-compose.production.yml.
+Добавить volume для статических файлов админки и фронтенда (static_volume).
+Добавить volume для хранения файлов, загруженных пользователями (media).
+Подключить файл .env к контейнерам db и backend (env_file: .env).
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
+# Настройка CI/CD.
+### Создать файл .github/workflows/main.yml workflow для тестирования кода, сборки образов, статики, выполнения миграций.
 
-## Чек-лист для проверки перед отправкой задания
+### Подготовить удалённый сервер к публикации проекта Kittygram:
+Создать директорию kittygram/ в домашней директории сервера.
+Скопировать "docker-compose.production.yml" и ".env" в папку kittygram/
+Настроить файл конфигурации Nginx для Kittygram.
 
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+# Задеплоить проект.
+git add .
+git commit -m "Add ___ commit"
+git push
+
+### И далее проект доступен на:
+https://github.com/Alex-085/
+Автор: Александр Кудрявцев
