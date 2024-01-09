@@ -29,6 +29,9 @@ POSTGRES_DB=kittygram
 DB_HOST=db
 DB_PORT=5432
 DB_NAME=kittygram
+SECRET_KEY=django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$
+DEBUG=False
+ALLOWED_HOSTS='127.0.0.1,localhost,fedor-aaappp.ddns.net'
 
 Написать docker-compose.yml и docker-compose.production.yml.
 Добавить volume для статических файлов админки и фронтенда (static_volume).
