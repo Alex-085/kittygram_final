@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from re import T
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
